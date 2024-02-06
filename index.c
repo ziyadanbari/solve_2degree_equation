@@ -50,22 +50,22 @@ int main() {
     scanf("%f",&b);
     printf("Enter c: ");
     scanf("%f",&c);
-    if (a == 0 || b == 0 || c == 0 ) {
+    if (a == 0) {
         printf(INVALID_DATA_MESSAGE);
         exit(1);
     }
     calculateDelta(a,b,c,&delta);
     calculateX(delta,a,b,c,&x1,&x2);
-    if (delta && x1 || x2) {
+    if (delta >= 0) {
         printf("Delta: %f\n", delta);
-        if (x1 && x2) {
+        if (x1 != x2) {
             printf("x1: %f\n", x1);
             printf("x2: %f\n", x2);
-        }else {
+        } else {
             printf("x: %f\n", x1);
         }
-    }else {
-        printf("Something went wrong");
+    } else {
+        printf(INVALID_DATA_MESSAGE);
     }
     return 0;
 }
