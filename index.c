@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include "tinyexpr.h"
 
 const char INVALID_DATA_MESSAGE[] = "The data entered is invalid";
 void calculateXIfDeltaEqualToZero(float a, float b, float delta, float *x) {
@@ -42,18 +43,24 @@ void calculateDelta(float a, float b, float c,float *delta) {
 
 
 int main() {
+    int error;
+    char expression[] = "";
     float a,b,c,delta,x1,x2;
     a = b = c = delta = x1 = x2 = 0;
     printf("Enter a: ");
-    scanf("%f",&a);
+    scanf("%s",&expression);
+    a = te_interp(expression,&error);
     printf("Enter b: ");
-    scanf("%f",&b);
+    scanf("%s",&expression);
+    b = te_interp(expression,&error);
     printf("Enter c: ");
-    scanf("%f",&c);
+    scanf("%s",&expression);
+    c = te_interp(expression,&error);
     if (a == 0) {
         printf(INVALID_DATA_MESSAGE);
         exit(1);
     }
+
     calculateDelta(a,b,c,&delta);
     calculateX(delta,a,b,c,&x1,&x2);
     if (delta >= 0) {
