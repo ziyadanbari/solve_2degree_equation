@@ -65,11 +65,12 @@ int main() {
     calculateX(delta,a,b,c,&x1,&x2);
     if (delta >= 0) {
         printf("Delta: %f\n", delta);
-        if (x1 != x2) {
+        if (x1 && x2) {
             printf("x1: %f\n", x1);
             printf("x2: %f\n", x2);
-        } else {
-            printf("x: %f\n", x1);
+        } else if (x1 || x2) {
+            float x = x1 ? x1 : x2;
+            printf("x: %f\n", x);
         }
     } else {
         printf(INVALID_DATA_MESSAGE);
