@@ -35,7 +35,8 @@ void calculateX(float delta,float a, float b, float c, float *x1, float *x2) {
 void calculateDelta(float a, float b, float c,float *delta) {
     *delta = pow(b, 2) - (4 * a * c);
     if (*delta < 0) {
-        printf(INVALID_DATA_MESSAGE);
+        printf("Delta: %f", *delta)
+        printf("Delta cannot be lower than 0");
         exit(1);
     }
 }
@@ -57,7 +58,7 @@ int main() {
     scanf("%s",&expression);
     c = te_interp(expression,&error);
     if (a == 0) {
-        printf(INVALID_DATA_MESSAGE);
+        printf("a cannot be 0");
         exit(1);
     }
 
